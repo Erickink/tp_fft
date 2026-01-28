@@ -13,7 +13,7 @@ void init_data(complex_t *data, unsigned int k)
 {
 	for(unsigned int i=0; i < N; i++)
 	{
-		float theta = (2.0 * M_PI * k * i) / N;
+		float theta = (2.0f * M_PI * k * i) / N;
 		data[i].real = cosf(theta);
 		data[i].imag = sinf(theta);
 	}
@@ -69,7 +69,7 @@ void fft_iterative(complex_t *data)
 
 void verify(complex_t *data, unsigned int k)
 {
-	float magnitude = sqrtf(powf(data[k].real, 2.0) + powf(data[k].imag, 2.0));
+	float magnitude = sqrtf(powf(data[k].real, 2) + powf(data[k].imag, 2));
 	if(((int) (magnitude + 0.5f)) == N)
 	{
 		printf("PASSED: ");
