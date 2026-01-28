@@ -42,7 +42,8 @@ void bit_reverse(complex_t *data)
 
 void compute_twiddle(complex_t *twiddle)
 {	
-	for (unsigned int i=0; i < (N/2); i++) {
+	for (unsigned int i=0; i < (N/2); i++)
+	{
 		float theta = (-2.0f * M_PI * i) / N;
 		twiddle[i].real = cosf(theta);
 		twiddle[i].imag = sinf(theta);

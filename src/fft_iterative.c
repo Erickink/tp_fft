@@ -43,7 +43,7 @@ void bit_reverse(complex_t *data)
 void fft_iterative(complex_t *data)
 {
 	bit_reverse(data);
-	
+
 	for(unsigned int m=2; m <= N; m=m<<1)
 	{
 		float theta = (-2.0f * M_PI) / m;
