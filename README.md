@@ -61,10 +61,18 @@ To run the simulation, follow these steps in order:
 
 * **Step 1: Compile**
 
-Build all three C codes into RISC-V binaries. You can override the default values of `N` and `ITER`:
+Build all three C codes into RISC-V binaries. 
 
 ```bash
 make compile_all
+```
+
+You can override the default values of `N` and `ITER`:
+
+```bash
+# Examples of different build configurations:
+make compile_all N=8 ITER=8
+make compile_all N=1024 ITER=1
 ```
 
 * **Step 2: Simulate**

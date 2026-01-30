@@ -58,11 +58,10 @@ help::
 #   DIRECTORY
 # ================================================================
 
-RELATIVE_PROJECT_DIR := ./
-PROJECT_REPO := $(shell readlink -f $(RELATIVE_PROJECT_DIR))
+PROJECT_DIR := .
 
-BUILD_DIR := $(PROJECT_REPO)/build
-SRC_DIR := $(PROJECT_REPO)/src
+BUILD_DIR := $(PROJECT_DIR)/build
+SRC_DIR := $(PROJECT_DIR)/src
 
 # ================================================================
 #   FILES
@@ -158,4 +157,4 @@ result_fft_precompute:
 	m5out/stats.txt
 
 clean:
-	rm -rf "$(BUILD_DIR)"
+	rm -rf $(BUILD_DIR)
