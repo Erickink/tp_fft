@@ -19,7 +19,7 @@ This repository contains three types of FFT using complex float32 data types.
 ## Parameters & Verification
 
 The simulation is configured with the following parameters:
-- **FFT Size (N):** 256.
+- **FFT Size (N):** 256 samples.
 - **Iterations (ITER):** 256 loops/iterations of FFT.
 
 **Verification Logic:**

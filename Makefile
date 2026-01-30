@@ -158,4 +158,4 @@ result_fft_precompute:
 	m5out/stats.txt
 
 clean:
-	rm -rf $(BUILD_DIR)
+	rm -rf "$(BUILD_DIR)"
