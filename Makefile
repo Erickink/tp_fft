@@ -58,7 +58,7 @@ help::
 #   DIRECTORY
 # ================================================================
 
-PROJECT_DIR := $(CURDIR)
+PROJECT_DIR := "$(CURDIR)"
 
 BUILD_DIR := $(PROJECT_DIR)/build
 SRC_DIR := $(PROJECT_DIR)/src
@@ -106,17 +106,17 @@ compile_all: compile_fft_recursive compile_fft_iterative compile_fft_precompute
 simulate_fft_recursive:
 	mkdir --parents $(BUILD_DIR)/fft_recursive
 	cd $(BUILD_DIR)/fft_recursive && \
-	gem5.opt $(SRC_DIR)/RISCV_se.py -b $(BUILD_DIR)/fft_recursive.riscv
+	gem5.opt $(PROJECT_DIR)/system_config/RISCV_se.py -b $(BUILD_DIR)/fft_recursive.riscv
 
 simulate_fft_iterative:
 	mkdir --parents $(BUILD_DIR)/fft_iterative
 	cd $(BUILD_DIR)/fft_iterative && \
-	gem5.opt $(SRC_DIR)/RISCV_se.py -b $(BUILD_DIR)/fft_iterative.riscv
+	gem5.opt $(PROJECT_DIR)/system_config/RISCV_se.py -b $(BUILD_DIR)/fft_iterative.riscv
 
 simulate_fft_precompute:
 	mkdir --parents $(BUILD_DIR)/fft_precompute
 	cd $(BUILD_DIR)/fft_precompute && \
-	gem5.opt $(SRC_DIR)/RISCV_se.py -b $(BUILD_DIR)/fft_precompute.riscv
+	gem5.opt $(PROJECT_DIR)/system_config/RISCV_se.py -b $(BUILD_DIR)/fft_precompute.riscv
 
 simulate_all: simulate_fft_recursive simulate_fft_iterative simulate_fft_precompute
 

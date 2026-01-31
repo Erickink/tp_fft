@@ -26,11 +26,15 @@ The simulation is configured with the following parameters:
 
 - **Input:** The input data is initialized with $k=1$ and for $n = 0, \dots, N-1$:
 
-$$x[n] = e^{j \frac{2\pi k n}{N}}$$
+$$
+x[n] = e^{j \frac{2\pi k n}{N}}
+$$
 
 - **Check:** We only verify if the magnitude of the output data at the index $k=1$ is equal to $N$:
 
-$$|X[k]| = \sqrt{X_{real}[k]^2 + X_{imag}[k]^2} = N$$
+$$
+|X[k]| = \sqrt{\left(X_{real}[k]\right)^2 + \left(X_{imag}[k]\right)^2} = N
+$$
 
 ## Configuration & Usage
 
