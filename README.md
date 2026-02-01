@@ -33,7 +33,7 @@ $$
 - **Check:** We only verify if the magnitude of the output data at the index $k=1$ is equal to $N$:
 
 $$
-|X[k]| = \sqrt{\left(X_{real}[k]\right)^2 + \left(X_{imag}[k]\right)^2} = N
+|X[k]| = \sqrt{X_{real}[k]^2 + X_{imag}[k]^2} = N
 $$
 
 ## Configuration & Usage

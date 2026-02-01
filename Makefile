@@ -104,57 +104,60 @@ compile_fft_precompute:
 compile_all: compile_fft_recursive compile_fft_iterative compile_fft_precompute
 
 simulate_fft_recursive:
-	mkdir --parents $(BUILD_DIR)/fft_recursive
-	cd $(BUILD_DIR)/fft_recursive && \
-	gem5.opt $(PROJECT_DIR)/system_config/RISCV_se.py -b $(BUILD_DIR)/fft_recursive.riscv
+	mkdir --parents $(BUILD_DIR)
+	cd $(BUILD_DIR) && \
+	gem5.opt -d m5out_fft_recursive $(PROJECT_DIR)/system_config/RISCV_se.py -b $(BUILD_DIR)/fft_recursive.riscv
 
 simulate_fft_iterative:
-	mkdir --parents $(BUILD_DIR)/fft_iterative
-	cd $(BUILD_DIR)/fft_iterative && \
-	gem5.opt $(PROJECT_DIR)/system_config/RISCV_se.py -b $(BUILD_DIR)/fft_iterative.riscv
+	mkdir --parents $(BUILD_DIR)
+	cd $(BUILD_DIR) && \
+	gem5.opt -d m5out_fft_iterative $(PROJECT_DIR)/system_config/RISCV_se.py -b $(BUILD_DIR)/fft_iterative.riscv
 
 simulate_fft_precompute:
-	mkdir --parents $(BUILD_DIR)/fft_precompute
-	cd $(BUILD_DIR)/fft_precompute && \
-	gem5.opt $(PROJECT_DIR)/system_config/RISCV_se.py -b $(BUILD_DIR)/fft_precompute.riscv
+	mkdir --parents $(BUILD_DIR)
+	cd $(BUILD_DIR) && \
+	gem5.opt -d m5out_fft_precompute $(PROJECT_DIR)/system_config/RISCV_se.py -b $(BUILD_DIR)/fft_precompute.riscv
 
 simulate_all: simulate_fft_recursive simulate_fft_iterative simulate_fft_precompute
 
 result_fft_recursive:
-	mkdir --parents $(BUILD_DIR)/fft_recursive
-	cd $(BUILD_DIR)/fft_recursive && \
+	mkdir --parents $(BUILD_DIR)/m5out_fft_recursive
+	cd $(BUILD_DIR)/m5out_fft_recursive && \
 	grep -e "simInsts" \
 	-e "numCycles" \
+	-e "board.processor.cores.core.cpi" \
 	-e "board.processor.cores.core.commit.committedInstType_0::MemRead" \
 	-e "board.processor.cores.core.commit.committedInstType_0::MemWrite" \
 	-e "board.processor.cores.core.branchPred.committed_0::total" \
 	-e "board.processor.cores.core.commit.committedInstType_0::Int" \
 	-e "board.processor.cores.core.commit.committedInstType_0::Float" \
-	m5out/stats.txt
+	stats.txt
 
 result_fft_iterative:
-	mkdir --parents $(BUILD_DIR)/fft_iterative
-	cd $(BUILD_DIR)/fft_iterative && \
+	mkdir --parents $(BUILD_DIR)/m5out_fft_iterative
+	cd $(BUILD_DIR)/m5out_fft_iterative && \
 	grep -e "simInsts" \
 	-e "numCycles" \
+	-e "board.processor.cores.core.cpi" \
 	-e "board.processor.cores.core.commit.committedInstType_0::MemRead" \
 	-e "board.processor.cores.core.commit.committedInstType_0::MemWrite" \
 	-e "board.processor.cores.core.branchPred.committed_0::total" \
 	-e "board.processor.cores.core.commit.committedInstType_0::Int" \
 	-e "board.processor.cores.core.commit.committedInstType_0::Float" \
-	m5out/stats.txt
+	stats.txt
 
 result_fft_precompute:
-	mkdir --parents $(BUILD_DIR)/fft_precompute
-	cd $(BUILD_DIR)/fft_precompute && \
+	mkdir --parents $(BUILD_DIR)/m5out_fft_precompute
+	cd $(BUILD_DIR)/m5out_fft_precompute && \
 	grep -e "simInsts" \
 	-e "numCycles" \
+	-e "board.processor.cores.core.cpi" \
 	-e "board.processor.cores.core.commit.committedInstType_0::MemRead" \
 	-e "board.processor.cores.core.commit.committedInstType_0::MemWrite" \
 	-e "board.processor.cores.core.branchPred.committed_0::total" \
 	-e "board.processor.cores.core.commit.committedInstType_0::Int" \
 	-e "board.processor.cores.core.commit.committedInstType_0::Float" \
-	m5out/stats.txt
+	stats.txt
 
 clean:
 	rm -rf $(BUILD_DIR)
