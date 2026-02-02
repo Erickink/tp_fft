@@ -31,7 +31,7 @@ RUN pip install matplotlib
 
 WORKDIR /workspace
 ENV WORKSPACE=/workspace
-RUN git clone https://github.com/gem5/gem5.git && \
+RUN git clone https://gem5.googlesource.com/public/gem5 && \
 	cd gem5 && \
 	scons build/RISCV/gem5.opt -j 4 && \
 	cp /workspace/gem5/build/RISCV/gem5.opt /usr/local/bin
