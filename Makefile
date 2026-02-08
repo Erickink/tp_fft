@@ -79,8 +79,8 @@ M5_LIB := $(GEM5_PATH)/util/m5/build/riscv/out/libm5.a
 #   OPTIONS
 # ================================================================
 
-N := 256
-ITER := 256
+N := 32768
+ITER := 1
 
 # ================================================================
 #   COMMAND
@@ -124,40 +124,46 @@ result_fft_recursive:
 	mkdir --parents $(BUILD_DIR)/m5out_fft_recursive
 	cd $(BUILD_DIR)/m5out_fft_recursive && \
 	grep -e "simInsts" \
-	-e "numCycles" \
-	-e "board.processor.cores.core.cpi" \
-	-e "board.processor.cores.core.commit.committedInstType_0::MemRead" \
-	-e "board.processor.cores.core.commit.committedInstType_0::MemWrite" \
-	-e "board.processor.cores.core.branchPred.committed_0::total" \
-	-e "board.processor.cores.core.commit.committedInstType_0::Int" \
-	-e "board.processor.cores.core.commit.committedInstType_0::Float" \
-	stats.txt
+		-e "numCycles" \
+		-e "board.processor.cores.core.cpi" \
+		-e "board.processor.cores.core.commit.committedInstType_0::MemRead" \
+		-e "board.processor.cores.core.commit.committedInstType_0::FloatMemRead" \
+		-e "board.processor.cores.core.commit.committedInstType_0::MemWrite" \
+		-e "board.processor.cores.core.commit.committedInstType_0::FloatMemWrite" \
+		-e "board.processor.cores.core.branchPred.committed_0::total" \
+		-e "board.processor.cores.core.commit.committedInstType_0::Int" \
+		-e "board.processor.cores.core.commit.committedInstType_0::Float" \
+		stats.txt
 
 result_fft_iterative:
 	mkdir --parents $(BUILD_DIR)/m5out_fft_iterative
 	cd $(BUILD_DIR)/m5out_fft_iterative && \
 	grep -e "simInsts" \
-	-e "numCycles" \
-	-e "board.processor.cores.core.cpi" \
-	-e "board.processor.cores.core.commit.committedInstType_0::MemRead" \
-	-e "board.processor.cores.core.commit.committedInstType_0::MemWrite" \
-	-e "board.processor.cores.core.branchPred.committed_0::total" \
-	-e "board.processor.cores.core.commit.committedInstType_0::Int" \
-	-e "board.processor.cores.core.commit.committedInstType_0::Float" \
-	stats.txt
+		-e "numCycles" \
+		-e "board.processor.cores.core.cpi" \
+		-e "board.processor.cores.core.commit.committedInstType_0::MemRead" \
+		-e "board.processor.cores.core.commit.committedInstType_0::FloatMemRead" \
+		-e "board.processor.cores.core.commit.committedInstType_0::MemWrite" \
+		-e "board.processor.cores.core.commit.committedInstType_0::FloatMemWrite" \
+		-e "board.processor.cores.core.branchPred.committed_0::total" \
+		-e "board.processor.cores.core.commit.committedInstType_0::Int" \
+		-e "board.processor.cores.core.commit.committedInstType_0::Float" \
+		stats.txt
 
 result_fft_precompute:
 	mkdir --parents $(BUILD_DIR)/m5out_fft_precompute
 	cd $(BUILD_DIR)/m5out_fft_precompute && \
 	grep -e "simInsts" \
-	-e "numCycles" \
-	-e "board.processor.cores.core.cpi" \
-	-e "board.processor.cores.core.commit.committedInstType_0::MemRead" \
-	-e "board.processor.cores.core.commit.committedInstType_0::MemWrite" \
-	-e "board.processor.cores.core.branchPred.committed_0::total" \
-	-e "board.processor.cores.core.commit.committedInstType_0::Int" \
-	-e "board.processor.cores.core.commit.committedInstType_0::Float" \
-	stats.txt
+		-e "numCycles" \
+		-e "board.processor.cores.core.cpi" \
+		-e "board.processor.cores.core.commit.committedInstType_0::MemRead" \
+		-e "board.processor.cores.core.commit.committedInstType_0::FloatMemRead" \
+		-e "board.processor.cores.core.commit.committedInstType_0::MemWrite" \
+		-e "board.processor.cores.core.commit.committedInstType_0::FloatMemWrite" \
+		-e "board.processor.cores.core.branchPred.committed_0::total" \
+		-e "board.processor.cores.core.commit.committedInstType_0::Int" \
+		-e "board.processor.cores.core.commit.committedInstType_0::Float" \
+		stats.txt
 
 clean:
 	rm -rf $(BUILD_DIR)

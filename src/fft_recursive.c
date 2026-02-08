@@ -25,8 +25,8 @@ void fft_recursive(complex_t *data, unsigned int n)
 	{
 		return;
 	}
-	complex_t even[n/2];
-	complex_t odd[n/2];
+	complex_t *even = malloc((n/2) * sizeof(complex_t));
+	complex_t *odd = malloc((n/2) * sizeof(complex_t));
 	for(unsigned int i=0; i < (n/2); i++)
 	{
 		even[i] = data[2 * i];
@@ -79,8 +79,8 @@ int main(void)
 	}
 	printf("FFT size [N] = %d\n", N);
 
-	complex_t input[N];
-	complex_t data[N];
+	complex_t *input = malloc(N * sizeof(complex_t));
+	complex_t *data = malloc(N * sizeof(complex_t));
 	unsigned int k = 1;
 
 	init_data(input, k);
@@ -91,7 +91,7 @@ int main(void)
 		memcpy(data, input, N * sizeof(complex_t));
 		fft_recursive(data, N);
 	}
-	m5_dump_stats(0, 0);
+	m5_exit(0);
 
 	verify(data, k);
 	return 0;
